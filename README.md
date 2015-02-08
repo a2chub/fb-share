@@ -9,3 +9,5 @@ angular等動的生成なページでindv pageがshareされる仕組みを考�
 - markupsafe
 - werkzeug
 - itsdangerous
+
+all in here > https://github.com/mitsuhiko
