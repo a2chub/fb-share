@@ -1,0 +1,17 @@
+application: fb-share
+version: fb-share-001
+runtime: python27
+threadsafe: true
+api_version: 1
+
+handlers:
+
+- url: /img
+  static_dir: img
+
+- url: /static
+  static_dir: static
+
+
+- url: /.*
+  script: main.app
