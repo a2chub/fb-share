@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app= "MainApp">
+<head>
+<title> Can you Crawl?</title>
+
+<meta property="fb:app_id" content="1527035397574582">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+
+<meta property="og:image" content="{{ ret_data.og_image}}">
+<meta property="og:site_name" content="{{ ret_data.og_site_name}}">
+<meta property="og:title" content="{{ ret_data.og_title }}">
+<meta property="og:description" content="{{ ret_data.og_desc }}">
+<meta property="og:url" content="{{ ret_data.og_url }}">
+<base href='/'>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js
+"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular-route.min.js"></script>
+<script src="/static/scripts/ng.js"></script>
+
+
+<script>
+  $(function(){
+    function main(){
+      console.info( getPath() );
+      setArticleID();
+      setJsonData();
+    };
+
+    function getPath(){
+      var path_str = location.href;
+      var path_dict = path_str.split('/');
+      var href_length = path_dict.length
+      var ret_data = path_dict[ href_length -2 ]
+                   + "/"
+                   + path_dict[ href_length -1 ];
+      return ret_data
+    };
+
+    function setArticleID(){
+      $("#content_js").html( getPath());
+    };
+
+    function setJsonData(){
+      var cur_url = '/api/' + getPath();
+      console.log("get url is" + cur_url);
+      $.getJSON( cur_url, function(json){
+        var arr_id = json.length - 1;
+        console.log( "from api json is :" + json.id);
+        $("#json_content").html( json.id );
+      });
+    };
+
+    main();
+    });
+</script>
+</head>
+<body>
+<img src='{{ ret_data.og_image}}' width=100px>
+<h1>this is index.html</h1>
+<p/>
+<div id='from_server'>
+from_server : <div>{{ ret_data.page_id }}</div>
+</div>
+<p/>
+
+<div id='from_js'>
+from_js :
+pathname:<div id='content_js'></div>
+</div>
+<p/>
+
+from_api_json:
+<pre id="json_content">
+</pre>
+<hr>
+<h2>ng-view area</h2>
+<div id="ng-area">
+  <div ng-view></div>
+</div>
+</body>
+</html>
