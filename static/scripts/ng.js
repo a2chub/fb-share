@@ -33,6 +33,7 @@ MainApp.controller("mainCtrl", function($http, $scope){
   var api_url = "/api/" + path_dict[ href_length -2 ]
                + "/"
                + path_dict[ href_length -1 ];
+  $scope.page_id = path_dict[ href_length -1 ];
   $http({
     url: api_url,
     method: 'GET'
@@ -40,6 +41,7 @@ MainApp.controller("mainCtrl", function($http, $scope){
   .success(function (data, status, headers, config) {
     console.info( data );
     $scope.json_data = data;
+    $scope.page_name = data.page_name;
   })
 
 
