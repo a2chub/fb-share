@@ -19,6 +19,7 @@ def api(page_type='default', id=000):
 
 @app.route('/')
 @app.route('/article/<page_id>')
+@app.route('/article/<page_id>/')
 @app.route('/#/article/<page_id>')
 def index(page_id=0):
   print "+" * 80
