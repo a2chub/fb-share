@@ -10,16 +10,16 @@ var MainApp = angular.module("MainApp", [ "ngRoute" ])
 
 
 MainApp.config(function($routeProvider){
-  $routeProvider.
-  when('/',  {
+  $routeProvider
+  .when('/',  {
     controller: "mainCtrl",
     templateUrl: "/static/views/top.html",
-  }).
-  when('/article/:id', {
+  })
+  .when('/article/:id', {
     controller: "mainCtrl",
     templateUrl: "/static/views/article.html",
-  }).
-  otherwise({
+  })
+  .otherwise({
     redirectTo: "/"
   })
 })

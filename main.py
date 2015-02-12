@@ -28,7 +28,7 @@ def index(page_id=0):
   if page_id == 0:
      ret_data = {'page_id':str(page_id),
       "og_image": "http://fb-share.appspot.com/img/top.png",
-      "og_site_name" : "top site name",
+      "og_site_name" : "top site",
       "og_title" : u"ここはトップよん",
       "og_desc" : u"トップページなう。fbが動的なページとtopページをクロール仕分けてくれるか",
       "og_url" : "http://fb-share.appspot.com/"
